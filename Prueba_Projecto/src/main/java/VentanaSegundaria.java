@@ -5,6 +5,13 @@ public class VentanaSegundaria extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JButton tallaButton;
+    private JButton materialButton;
+    private JButton marcaButton;
+    private JButton cantidadButton;
+    private JButton precioButton;
+    private JButton zapatoButton;
+    private JButton mostrarButton;
 
     public VentanaSegundaria() {
         setContentPane(contentPane);

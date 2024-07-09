@@ -20,7 +20,7 @@ public class VentanaPrincipal {
                 if (usuario.equals("Raúl") && contrasena.equals("123qweasdzxc")){
                     JOptionPane.showMessageDialog(null,"Usuario autenticado");
                     VentanaSegundaria dialog = new VentanaSegundaria();
-                    dialog.setSize(400,400);
+                    dialog.setSize(600,600);
                     dialog.setVisible(true);
 
                 }else{
