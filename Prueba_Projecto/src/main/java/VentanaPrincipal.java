@@ -19,7 +19,7 @@ public class VentanaPrincipal {
                 String contrasena = String.valueOf(usuarioContrasena.getPassword());
                 if (usuario.equals("Raúl") && contrasena.equals("123qweasdzxc")){
                     JOptionPane.showMessageDialog(null,"Usuario autenticado");
-                    VentanaSegundaria dialog = new VentanaSegundaria();
+                    Terminal dialog = new Terminal();
                     dialog.setSize(600,600);
                     dialog.setVisible(true);
 

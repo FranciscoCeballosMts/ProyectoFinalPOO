@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.event.*;
 
-public class VentanaSegundaria extends JDialog {
+public class Terminal extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -13,7 +13,7 @@ public class VentanaSegundaria extends JDialog {
     private JButton zapatoButton;
     private JButton mostrarButton;
 
-    public VentanaSegundaria() {
+    public Terminal() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -57,7 +57,7 @@ public class VentanaSegundaria extends JDialog {
     }
 
     public static void main(String[] args) {
-        VentanaSegundaria dialog = new VentanaSegundaria();
+        Terminal dialog = new Terminal();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
