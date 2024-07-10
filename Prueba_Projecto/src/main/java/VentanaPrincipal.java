@@ -11,7 +11,7 @@ public class VentanaPrincipal {
     private JLabel contrasena;
     private JPasswordField usuarioContrasena;
 
-    public VentanaPrincipal() {
+    public VentanaPrincipal(Bodega bodega) {
         iniciarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -19,8 +19,8 @@ public class VentanaPrincipal {
                 String contrasena = String.valueOf(usuarioContrasena.getPassword());
                 if (usuario.equals("Raúl") && contrasena.equals("123qweasdzxc")){
                     JOptionPane.showMessageDialog(null,"Usuario autenticado");
-                    Terminal dialog = new Terminal();
-                    dialog.setSize(600,600);
+                    InterfazMenu dialog = new InterfazMenu();
+                    dialog.setSize(400,400);
                     dialog.setVisible(true);
 
                 }else{

@@ -1,71 +1,63 @@
-import javax.swing.*;
-import java.awt.event.*;
 
-public class Terminal extends JDialog {
-    private JPanel contentPane;
-    private JButton buttonOK;
-    private JButton buttonCancel;
-    private JButton tallaButton;
-    private JButton materialButton;
-    private JButton marcaButton;
-    private JButton cantidadButton;
-    private JButton precioButton;
-    private JButton zapatoButton;
-    private JButton mostrarButton;
 
-    public Terminal() {
-        setContentPane(contentPane);
-        setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
+public class Terminal {
+	private Bodega bodega;
 
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
+	public Bodega getBodega() {
+		return bodega;
+	}
 
-        // call onCancel() when cross is clicked
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                onCancel();
-            }
-        });
+	public Terminal(Bodega bodega) {
+		this.bodega = bodega;
+	}
 
-        // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        zapatoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+	public void verInventario() {
+		bodega.getZapatos().stream()
+				.forEach(System.out::println);
+	}
 
-            }
-        });
-    }
+	public List<Zapato> ordenarPorTalla() {
+		return bodega.getZapatos().stream()
+				.sorted((z1,z2)->Integer.compare(z1.getTalla(), z2.getTalla()))
+				.collect(Collectors.toList());
+	}
 
-    private void onOK() {
-        // add your code here
-        dispose();
-    }
+	public List<Zapato> ordenarPorMarca() {
+		return bodega.getZapatos().stream()
+				.sorted((z1,z2)->z1.getMarca().compareTo(z2.getMarca()))
+				.collect(Collectors.toList());
+	}
 
-    private void onCancel() {
-        // add your code here if necessary
-        dispose();
-    }
+	public List<Zapato> ordenarPorMaterial() {
+		return bodega.getZapatos().stream()
+				.sorted((z1,z2)->z1.getMaterial().compareTo(z2.getMaterial()))
+				.collect(Collectors.toList());
+	}
 
-    public static void main(String[] args) {
-        Terminal dialog = new Terminal();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
+	public void agregarZapato(Zapato ... zapatos) {
+		for (Zapato zapato:zapatos){
+			bodega.getZapatos().add(zapato);
+		}
+	}
+
+	public List<Zapato> ordenarPorCantidad() {
+		return bodega.getZapatos().stream()
+				.sorted((z1,z2)->Integer.compare(z1.getCantidad(), z2.getCantidad()))
+				.collect(Collectors.toList());
+
+	}
+	public List<Zapato> ordenarPorPrecio() {
+		return bodega.getZapatos().stream()
+				.sorted((z1,z2)->Integer.compare(z1.getPrecio(), z2.getPrecio()))
+				.collect(Collectors.toList());
+	}
+
 }
