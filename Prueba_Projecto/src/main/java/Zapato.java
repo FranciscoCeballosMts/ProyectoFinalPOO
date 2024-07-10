@@ -1,4 +1,4 @@
-public class Zapato {
+public abstract class Zapato {
     private int talla;
     private String materiales;
     private String marca;
