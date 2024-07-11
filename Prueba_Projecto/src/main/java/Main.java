@@ -17,14 +17,8 @@ import java.util.concurrent.ExecutionException;
 
 public class Main {
     public static void main(String[] args)throws IOException, ExecutionException, InterruptedException {
-
-        //iniciar clases
-        List<Zapato> zapatos=new ArrayList<>();
-        Bodega bodega=new Bodega(zapatos,40);
-        Terminal terminal=new Terminal(bodega);
-
         JFrame frame = new JFrame(); //Es para interactuar cómo en una ventana de Windons
-        VentanaPrincipal Ventana = new VentanaPrincipal(bodega); //Se esta creando el objeto una Ventana para poder tener muchas más ventanas
+        VentanaPrincipal Ventana = new VentanaPrincipal(); //Se esta creando el objeto una Ventana para poder tener muchas más ventanas
         frame.setContentPane(Ventana.getVentanaPrincipal());//
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Es para cuando uno oprime la X de la ventana el programa para
         frame.setSize(300,300); //Es para determinar el tamaño de la ventana
@@ -41,7 +35,10 @@ public class Main {
         FirebaseApp.initializeApp(options);
         Firestore db = FirestoreClient.getFirestore();
 
-
+        //iniciar clases
+        List<Zapato> zapatos=new ArrayList<>();
+        Bodega bodega=new Bodega(zapatos,40);
+        Terminal terminal=new Terminal(bodega);
 
 
         Zapato z1=new Zapatilla(42,"goma","nike",10,50000,bodega,"casual","vapormax");

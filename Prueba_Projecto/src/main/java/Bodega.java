@@ -11,8 +11,6 @@ public class Bodega {
 		this.capacidadMaxima = capacidadMaxima;
 	}
 
-
-
 	public void saberCapacidadRestante() {
 		// TODO - implement Bodega.saberCapacidadRestante
 		throw new UnsupportedOperationException();
